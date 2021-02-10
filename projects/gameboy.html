@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-66EZDH17EN"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-66EZDH17EN');
+		</script>
+        
+		<title>Gameboy emulator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+        <a href="javascript:history.back()" class="button primary">Go back</a>
+        <div id="main">
+
+            <article class="post featured">
+                
+            <h2>Nintendo GameBoy (TM) emulator</h2>
+
+            <!--Abstract-->
+            <h3 id="abstract" style="text-align: left;">Abstract</h3>  
+            <p>
+                The main goal of this project is to develop a large C program focusing on the "system" aspect. The framework chosen is the simulation 
+            of the <a href="https://en.wikipedia.org/wiki/Game_Boy">GameBoy (TM) of Nintendo (R)</a>. 
+            </p>
+            <p>The first Game Boy console, launched in Japan in 1989, looked like this:</p>
+            <p>
+                <img src="../images/gameboy2.png" alt="A gameboy" />
+            </p>
+            <p>
+                It had a greenish screen of 144 lines of 160 pixels in 4 shades of "gray" and 6 control buttons (A, B and 4 directions). 
+                The original Game Boy and its successive updates (with colors) sold nearly 120 million copies worldwide. The most popular games
+                at the time were :
+            </p>            
+            <ul style="text-align: left">
+                <li><a href="https://en.wikipedia.org/wiki/Super_Mario_Land">Super Mario Land</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Alleyway_%28video_game%29">Alleyway</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Baseball_%281983_video_game%29">Baseball</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Yakuman_%28video_game%29">Yakuman</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Tetris_%28Game_Boy%29">Tetris</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Tennis_%281984_video_game%29">Tennis</a>.</li>
+            </ul>
+            <p>
+                This project almost completely simulates all the features of the original Game Boy. 
+                The simulator will allow you to go back in time (yes, yes!) and play some of the above mentioned games 
+                from their real code (copy of the contents of their cartridge from the time)!
+            </p>
+
+            <!--Goals-->
+            <h3 id="goals" style="text-align: left;">Goals</h3>
+            <p>Like any game console, the Game Boy is a small computer. Its main components are :</p>
+            <ul style="text-align: left;">
+                <li>the processor (8-bit SHARP LR35902, a hybrid between Intel 8080 and Zilog Z80, working at a clock frequency of only 4.194304 MHz);</li>
+                <li>8 KiB internal S-<a href="/wiki/Random-access_memory" title="Random-access memory">RAM</a></li>
+                <li>8 KiB internal <a href="/wiki/Video_RAM_(dual-ported_DRAM)" title="Video RAM (dual-ported DRAM)">Video RAM</a></li>
+                <li>a 2.6&nbsp;inch reflective <a href="/wiki/Super-twisted_nematic_display" title="Super-twisted nematic display">super-twisted
+                     nematic</a> (STN) <a href="/wiki/Liquid-crystal_display" title="Liquid-crystal display">liquid-crystal display</a> (LCD) 
+                     and its controller, a simple graphic processor</li>
+                <li>a sound synthesizer (which is not be simulated in this project).</li>
+                <li>the keyboard, with a total of eight buttons :
+                    <ul>
+                        <li>four direction buttons (up, down, left, right), organized in a directional cross</li>
+                        <li>four action buttons (A, B, Start, Select)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p><a href="http://meseec.ce.rit.edu/551-projects/spring2014/4-1.pdf">The figure</a>  below illustrates the architecture of the Game Boy. </p>
+            <p><img src="../images/GBGuts.gif" alt="Architecture d'une Game Boy."></p>
+            <p>
+                The Game Boy contains --- with one small exception --- no programs. Therefore, games are distributed in the form of "cartridges", 
+                which are plastic cases containing a read-only memory containing the game program and its data (graphics, sounds, etc.).
+                When a cartridge is inserted into the Game Boy, its ROM is physically connected to the rest of the system, 
+                and the game it contains is played as soon as the system is turned on.
+            </p>
+            <p>
+                The architecture of the emulation program will follow, in broad outline, 
+                the hardware architecture of the Game Boy. Thus, each of the components mentioned above --- except for the sound synthesizer --- 
+                will be modeled by a corresponding C module (structure, functions).
+            </p>
+            <p>
+                The solution chosen for this emulator is a "functional" simulation that faithfully simulates only those aspects of the 
+                Game Boy that are explicitly described in Nintendo's official documentation (rather than simulating every single hardware 
+                component). Such a level of simulation is simpler but has a drawback: some specific hardware features that are not described, but 
+                which programmers of some games have nevertheless taken advantage of, are not simulated and it will therefore not be possible to 
+                run such games on this simulator.
+            </p>
+
+            <!--Organisation-->
+            <h3 id="general description" style="text-align: left;">General description</h3>
+            <p>Here is a description in a general way of the main concepts and data structures that this project relies upon. </p>
+            <p>Concretely, the components to be simulated will be :</p>
+            <ul style="text-align: left;">
+                <li>the arithmetic-logic unit (ALU) ;</li>
+                <li>the memory and the bus</li>
+                <li>the CPU and its registers ;</li>
+                <li>the game cartridges ;</li>
+                <li>the timer ;</li>
+                <li>the LCD screen ;</li>
+                <li>the LCD controller ;</li>
+                <li>the images representation.</li>
+            </ul>
+
+            <!--TODO: add source code-->
+            <!--TODO: add screenshpts-->
+            <!--TODO: add index-->
+        </article>
+
+            <!-- Scripts -->
+                <script src="../assets/js/jquery.min.js"></script>
+                <script src="../assets/js/jquery.scrollex.min.js"></script>
+                <script src="../assets/js/jquery.scrolly.min.js"></script>
+                <script src="../assets/js/browser.min.js"></script>
+                <script src="../assets/js/breakpoints.min.js"></script>
+                <script src="../assets/js/util.js"></script>
+                <script src="../assets/js/main.js"></script>
+        </div>
+	</body>
+</html>
