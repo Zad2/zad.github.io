@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-66EZDH17EN"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-66EZDH17EN');
+		</script>
+        
+		<title>Tetris</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+        <a href="javascript:history.back()" class="button primary">Go back</a>
+        <div id="main">
+
+            <article>
+                <h2>A Tetris Game in Assembly Language</h2>
+
+                <!--Abstract-->
+                <h3 id="abstract" style="text-align: left;">Abstract</h3> 
+                <p>
+                    The goal is to write a complete program in assembly language and run it on a NIOS II processor. In this project, a simplified 
+                    version of the <a href="https://en.wikipedia.org/wiki/Tetris">TETRIS</a> game is implemented in assembly language. You can 
+                    play it on a Gecko4EPFL board.
+                </p>
+
+                <!--Requirements-->
+                <h3 id="requirements" style="text-align: left;">Requirements</h3> 
+                <ul style="text-align: left;">
+                    <li>nios2sim Simulator (Java 10)</li>
+                    <li><a href="https://gecko-wiki.ti.bfh.ch/gecko4education_epfl:start">Gecko4Education-EPFL</a></li>
+                    <li>multicycle Nios II processor</li>
+                </ul>
+
+                <!--General Description-->
+                <h3 id="general description">General description</h3>
+                <p>
+                    The goal in TETRIS game is to arrange tetrominoes (this is how the game pieces in TETRIS are called)
+                    to form continuous lines that span all the way from the left to the right edge of the game screen. Once
+                    one such line is formed, it will disappear and the game score will be incremented. During the game, the
+                    tetrominoes can be moved to the left or to the right (horizontally), or rotated, or simply let fall down.
+                    Once the game screen becomes full and the new tetromino is no longer able to move down from the top
+                    of the screen, the game ends. The longest one plays, the higher the score and thus better the outcome.
+                    The figure below shows the Gecko4EPFL board and the role of the buttons. The game will be displayed on
+                    the LED array of the Gecko4EPFL. Initially, the screen will be empty, the score will be zero, and the
+                    first tetromino will be generated close to the top of the screen. Each LED represents one pixel, and each
+                    tetromino, is made of 4 pixels. To make the game implementation simpler,
+                    we only use the top 8 rows of the LED screen (96 LEDs in total). From the initial tetromino location,
+                    you can move or rotate the tetromino, or let it fall until it reaches its final position. Then, the game will
+                    generate a new random tetromino. Once you line up the tetrominoes to form a full line, the line will
+                    be removed, and all tetrominoes stacked on the top of it will go down by one pixel precisely. One line
+                    disappearing will result in the score being incremented (increased by 1 point). The game continues until
+                    a newly created random tetromino can’t fit the game screen.
+                </p>
+                <div style="text-align: center;">
+                    <img src="../images/gecko.png" alt="a Gecko4Education-EPFL board">
+                </div>
+
+            </article>
+            <!-- Scripts -->
+            <script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/jquery.scrollex.min.js"></script>
+            <script src="../assets/js/jquery.scrolly.min.js"></script>
+            <script src="../assets/js/browser.min.js"></script>
+            <script src="../assets/js/breakpoints.min.js"></script>
+            <script src="../assets/js/util.js"></script>
+            <script src="../assets/js/main.js"></script>
+        </div>
+	</body>
+</html>

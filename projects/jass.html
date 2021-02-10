@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-66EZDH17EN"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-66EZDH17EN');
+		</script>
+        
+		<title>Jass</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+        <a href="javascript:history.back()" class="button primary">Go back</a>
+        <div id="main">
+
+            <article>
+                <h2>A game of Jass in Java</h2>
+
+                <!--Abstract-->
+                <h3 id="abstract" style="text-align: left;">Abstract</h3> 
+                <div class="outline-text-2" id="text-org9c641cd">
+                    <p>
+                        The goal of this project, named <i>Javass</i>, is to write a program to play a variant of the famous game of 
+                        <a href="https://en.wikipedia.org/wiki/Jass">Jass</a>. Jass is a very popular card game in Switzerland - where 
+                        it is often referred to as the national sport - and in other neighboring countries.</p>    
+                    <p>
+                        There are many variants of Jass, so here are the rules used in this variant.
+                    </p>
+                    
+                    <p>
+                        The Jass is played with four players, divided into two teams of two and placed around a table with teammates facing eachother, 
+                        i.e. so that each player is surrounded by the two opposing players. The players use a deck of 36 cards, each with 
+                        a <i>suit</i> and a <i>rank</i> that identifies it. There are four different suits - spades (♠), hearts (♥), diamonds (♦) 
+                        and clubs (♣) - and nine ranks - 6, 7, 8, 9, 10, jack, queen, king and ace.                    
+                    <p>
+                        A game is played in a number of <i>turns</i>, until a team has accumulated a certain number of points - usually 1000 - at 
+                        which point it is declared the winner.
+                    </p>
+                    
+                    <p>
+                        At the beginning of each round, the 36 cards of the game are randomly distributed to the players, 
+                        who receive 9 cards each, which they do not show to anyone. One of the four suits is designated as 
+                        the <i>trump suit</i>, which gives the cards of that suit special characteristics: they are stronger than those of 
+                        the other suits, and can score more points.
+                    </p>
+                    
+                    <p>
+                        A game turn consists of a succession of 9 <i>folds</i>. At the beginning of each fold, a determined player places a card 
+                        from his or her hand on the table. The following players do the same, in order, but following certain rules. Basically, a 
+                        player can either <i>follow</i> by playing a card of the same suit as the first, or <i>cut</i> by playing a trump card.
+                    </p>
+                    
+                    <p>
+                        When all players have put down a card, the team that put down the strongest card wins the trick, and all the points of 
+                        the cards that make it up. The player with the strongest card is the one who places the first card of the next fa-download.
+                    </p>
+                    
+                    <p>
+                        The image below shows the second fold of the first round of a Jass game. It is up to the human player (Ola) to play and, according to the rules, he can only put down his ten or queen of spades, 
+                        which is why these cards are highlighted.
+                    </p>
+                    <div class="figure" >
+                        <p style="text-align: center;"><img src="../images/javass-screenshot.png" alt="javass-screenshot.png" width="70%" class="shadowed"></p>
+                        <p style="text-align: center;"><span class="figure-number">Figure&nbsp;1&nbsp;: </span>A game of Ja(va)ss in progress
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!--Overview-->
+                <h3 id="overview" style="text-align: left;">Overview</h3> 
+
+                <div class="outline-text-2" id="text-org9032102">
+                    <p>
+                        Javass allows a human player to compete against three other players in a Jass game. Each of these three players can be either :                    </p>
+            
+                        <ol class="org-ol">
+                            <li>a player simulated by the computer/li>
+                            <li>a human player playing on his own computer.</li>
+                        </ol> 
+                    <p>
+                        In order for several human players to play together in the same game, it is necessary that their computers are connected 
+                        to the same network. To enable this network game, Javass is composed of two distinct parts, named the <i>server</i> and 
+                        the <i>client</i>.
+                    </p>
+                    
+                    <p>
+                        The server is the part of the program that arbitrates the Jass game and is in charge of dealing the cards, memorizing 
+                        the points obtained by the teams, etc. The server is the part of the program that arbitrates the Jass game and is in 
+                        charge of distributing the cards, memorizing the points obtained by the teams, etc. It also manages the simulated 
+                        player(s), if any, and the graphical interface of the human player playing on the computer it is running on.
+                    </p>
+                    
+                    <p>
+                        The client is the part of the program that manages the graphical user interface of the human player(s) playing on remote 
+                        computers, each copy of the client being responsible for only one player.
+                    </p>
+                    
+                    <p>
+                        For example, in a game between a team composed of two human players and another team composed of a human player and a 
+                        simulated player, Javass runs on a total of three computers :
+                    </p>
+                    
+                    <ol class="org-ol">
+                        <li>a computer runs the server, which manages the whole game, the simulated player and the interface with a first human player,</li>
+                        
+                        <li>the other two computers each run a copy of the client, which is in charge of the interface of their associated human player.</li>
+                    </ol>
+                    
+                    <p>
+                        This situation is presented graphically in the figure below, where the arrows represent the communication between the different computers.
+                    </p>
+                    
+                    
+                    <div class="figure">
+                        <p style="text-align: center;"><img src="../images/client-server.png" alt="client-server.png"></p>
+                        <p style="text-align: center;"><span class="figure-number">Figure&nbsp;2&nbsp;: </span>Organization of a Jass game with three human players</p>
+                    </div>
+                </div>
+
+
+            </article>
+
+            <!-- Scripts -->
+            <script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/jquery.scrollex.min.js"></script>
+            <script src="../assets/js/jquery.scrolly.min.js"></script>
+            <script src="../assets/js/browser.min.js"></script>
+            <script src="../assets/js/breakpoints.min.js"></script>
+            <script src="../assets/js/util.js"></script>
+            <script src="../assets/js/main.js"></script>
+        </div>
+	</body>
+</html>

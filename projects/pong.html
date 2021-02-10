@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-66EZDH17EN"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-66EZDH17EN');
+		</script>
+        
+		<title>Pong</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+        <a href="javascript:history.back()" class="button primary">Go back</a>
+        <div id="main">
+
+            <article>
+                <h2>A Pong Game in Assembly Language</h2>
+
+                <!--Abstract-->
+                <h3 id="abstract" style="text-align: left;">Abstract</h3> 
+                <p>
+                    This project is an implementation of a simplified version of a classic game called <a href="https://en.wikipedia.org/wiki/Pong">Pong</a>
+                    in <a href="https://en.wikipedia.org/wiki/VHDL">VHDL</a>, and make it playable on GECKO4Education. Briefly, the game amounts to the following. 
+                    A ball is moving around the playfield diagonally, at a constant speed, bouncing off the walls and the bat controlled by the 
+                    player using two buttons. The bat can move only vertically. Each time the ball hits the left wall, the players score gets increased. 
+                    Each time it hits the right wall, the opponent wins a point. Players wins by reaching the score of 9 before his opponent, 
+                    otherwise they lose. Hence, their goal is to use the bat to guard the right wall as well as possible. The playfield and the 
+                    controls are shown in the figure below.
+                </p>
+                <div style="text-align: center;">
+                    <img src="../images/pong_gecko.png" alt="a Gecko4Education-EPFL board" style="max-width: 70%;">
+                </div>
+
+            </article>
+
+            <!-- Scripts -->
+            <script src="../assets/js/jquery.min.js"></script>
+            <script src="../assets/js/jquery.scrollex.min.js"></script>
+            <script src="../assets/js/jquery.scrolly.min.js"></script>
+            <script src="../assets/js/browser.min.js"></script>
+            <script src="../assets/js/breakpoints.min.js"></script>
+            <script src="../assets/js/util.js"></script>
+            <script src="../assets/js/main.js"></script>
+        </div>
+	</body>
+</html>
